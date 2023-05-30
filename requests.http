@@ -1,0 +1,16 @@
+### List All showtimes
+GET http://e-theatre.test/api/showtimes
+
+
+### Create a new showtime
+POST  http://e-theatre.test/api/showtimes
+Content-Type: application/json
+Accept: application/json
+
+{
+      "from": "09:59",
+      "to": "10:00"
+}
+
+### delete showtime
+DELETE   http://e-theatre.test/api/showtimes/1

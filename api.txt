@@ -1,0 +1,7 @@
+login (email,password)
+crud for movie (name,event_day,showtime)
+movie_event_showtimes (movie_id,eventday_showtime_id)
+crud for showtimes (time)
+crud for eventdays (day)
+eventday_showtime(showtime_id,eventday_id)
+register_events (name,mobile,email,event_day,movie_event_showtimes_id)

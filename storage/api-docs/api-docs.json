@@ -1,0 +1,95 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "E-theatre",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/showtimes": {
+            "get": {
+                "summary": "show all showtimes",
+                "description": "show all showtimes api",
+                "operationId": "a5bec289de1108a015fbccc9f813596a",
+                "responses": {
+                    "200": {
+                        "description": "get all showtimes successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "create new showtime",
+                "description": "create new showtime",
+                "operationId": "ef9b165743e11c124f3113697f4672e6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "from",
+                                    "to"
+                                ],
+                                "properties": {
+                                    "from": {
+                                        "type": "time",
+                                        "example": "8:00"
+                                    },
+                                    "to": {
+                                        "type": "time",
+                                        "example": "10:00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "showtime created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/showtimes/{id}": {
+            "delete": {
+                "summary": "delete showtime ",
+                "description": "delete showtime with id",
+                "operationId": "fa461c90c5c7cfb1fee94dcc4b36c282",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "showtime id to be deleted",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "showtime deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not Found Id"
+                    }
+                }
+            }
+        }
+    }
+}
