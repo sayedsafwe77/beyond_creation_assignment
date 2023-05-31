@@ -307,9 +307,14 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'ShowTime',
+            'text' => 'ShowTimes',
             'url'  => 'dashboard/showtimes',
             'can'  => 'manage-showtimes',
+        ],
+        [
+            'text' => 'EventDays',
+            'url'  => 'dashboard/eventdays',
+            'can'  => 'manage-eventdays',
         ],
         // [
         //     'text'        => 'pages',

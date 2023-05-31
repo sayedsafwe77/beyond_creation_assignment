@@ -2,9 +2,9 @@
 
 <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-12">
-        {{ BsForm::time('from') }}
+        {{ BsForm::date('event_day') }}
     </div>
     <div class="col-lg-3 col-md-6 col-sm-12">
-        {{ BsForm::time('to') }}
+        {{ BsForm::select('showtimes[]')->options($showtimes_array)->multiple(true)->placeholder('Select Showtime')->label(trans('showtimes.singular')) }}
     </div>
 </div>

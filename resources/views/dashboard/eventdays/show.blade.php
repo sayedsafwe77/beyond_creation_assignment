@@ -6,21 +6,30 @@
                 @slot('class', 'p-0')
                 @slot('bodyClass', 'p-0')
                 <table class="table table-striped table-middle">
-                    <tbody>
+                    <tbody class="text-center">
                         <tr>
-                            <th width="200">@lang('showtimes.attributes.from')</th>
-                            <td>{{ $showtime->from }}</td>
+                            <th width="200">@lang('eventdays.attributes.event_day')</th>
+                            <td>{{ $eventday->event_day }}</td>
                         </tr>
                         <tr>
-                            <th width="200">@lang('showtimes.attributes.to')</th>
-                            <td>{{ $showtime->to }}</td>
+                            <th colspan="2">{{ trans('showtimes.plural') }}</th>
                         </tr>
+                        <tr>
+                            <th>@lang('showtimes.attributes.from')</th>
+                            <th>@lang('showtimes.attributes.to')</th>
+                        </tr>
+                        @foreach ($eventday->showtimes as $showtime)
+                            <tr>
+                                <td>{{ $showtime->from }}</td>
+                                <td>{{ $showtime->to }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
                 @slot('footer')
-                    @include('dashboard.showtimes.partials.actions.edit')
-                    @include('dashboard.showtimes.partials.actions.delete')
+                    @include('dashboard.eventdays.partials.actions.edit')
+                    @include('dashboard.eventdays.partials.actions.delete')
                 @endslot
             </x-adminlte.box>
         </div>

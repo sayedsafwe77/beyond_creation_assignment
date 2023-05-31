@@ -1,6 +1,6 @@
-@can('create', \App\Models\Product::class)
-    <a href="{{ route('dashboard.showtimes.create') }}" class="btn btn-outline-success btn-sm">
+@can('create', \App\Models\EventDay::class)
+    <a href="{{ route('dashboard.eventdays.create') }}" class="btn btn-outline-success btn-sm">
         <i class="fas fa fa-fw fa-plus"></i>
-        @lang('showtimes.actions.create')
+        @lang('eventdays.actions.create')
     </a>
 @endcan

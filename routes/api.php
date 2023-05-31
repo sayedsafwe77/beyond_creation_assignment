@@ -22,4 +22,5 @@ Route::controller('ShowTimeController')->group(function () {
     Route::get('showtimes', 'index');
     Route::post('showtimes', 'store');
     Route::delete('showtimes/{showtime}', 'destroy');
+    Route::get('/select/showtimes', 'select')->name('showtimes.select');
 });

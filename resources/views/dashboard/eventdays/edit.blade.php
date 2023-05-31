@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 @section('content')
-    {{ BsForm::resource('showtimes')->putModel($showtime, route('dashboard.showtimes.update', $showtime)) }}
+    {{ BsForm::resource('eventdays')->putModel($eventday, route('dashboard.eventdays.update', $eventday)) }}
     <x-adminlte.box>
-        @slot('title', trans('showtimes.actions.edit'))
+        @slot('title', trans('eventdays.actions.edit'))
 
-        @include('dashboard.showtimes.partials.form')
+        @include('dashboard.eventdays.partials.form')
 
         @slot('footer')
-            {{ BsForm::submit()->label(trans('showtimes.actions.save')) }}
+            {{ BsForm::submit()->label(trans('eventdays.actions.save')) }}
         @endslot
     </x-adminlte.box>
     {{ BsForm::close() }}

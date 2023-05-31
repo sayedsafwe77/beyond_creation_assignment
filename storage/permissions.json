@@ -1,4 +1,5 @@
 [
     "manage.roles",
-    "manage.showtimes"
+    "manage.showtimes",
+    "manage.eventdays"
 ]
