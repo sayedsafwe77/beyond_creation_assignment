@@ -29,6 +29,8 @@ return [
     'attributes' => [
         'from' => 'من',
         'to' => 'الي',
+        'created_at' => 'اضافة في',
+        'deleted_at' => 'حذف في',
     ],
     'dialogs' => [
         'delete' => [

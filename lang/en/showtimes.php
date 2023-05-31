@@ -28,9 +28,8 @@ return [
         'restored' => 'The Showtime has been restored successfully.',
     ],
     'attributes' => [
-        'name' => 'Showtime name',
-        'currency' => 'Currency',
-        '%name%' => 'Showtime name',
+        'from' => 'from',
+        'to' => 'to',
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
     ],

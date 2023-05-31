@@ -24,7 +24,7 @@ class ShowTimeFilter extends BaseFilters
     protected function from($value)
     {
         if ($value) {
-            return $this->builder->where('from', "%$value%");
+            return $this->builder->where('from', '>=', "$value");
         }
         return $this->builder;
     }
@@ -37,7 +37,7 @@ class ShowTimeFilter extends BaseFilters
     protected function to($value)
     {
         if ($value) {
-            return $this->builder->where('to', "%$value%");
+            return $this->builder->where('to', '<=', "$value");
         }
         return $this->builder;
     }

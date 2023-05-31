@@ -12,9 +12,9 @@ trait UserHelpers
      *
      * @return bool
      */
-    public function isAdmin()
+    public function isSuperAdmin()
     {
-        return $this->type == User::ADMIN_TYPE;
+        return $this->hasRole('super-admin');
     }
 
 

@@ -18,6 +18,8 @@ class ShowTimeFactory extends Factory
     {
         return [
             //
+            'from' => fake()->time(),
+            'to' => fake()->time(),
         ];
     }
 }

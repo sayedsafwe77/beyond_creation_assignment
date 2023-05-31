@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ShowTimeRequest;
 use App\Models\ShowTime;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class ShowTimeController extends Controller
     {
         //
         $showtimes = ShowTime::filter()->paginate();
-        return view('dashboard.showtime.index', compact('showtimes'));
+        return view('dashboard.showtimes.index', compact('showtimes'));
     }
 
     /**
@@ -24,52 +25,62 @@ class ShowTimeController extends Controller
     public function create()
     {
         //
+        return view('dashboard.showtimes.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ShowTimeRequest $request)
     {
-        //
+        $showtime = ShowTime::create($request->all());
+        flash(trans('showtimes.messages.created'));
+        return redirect()->route('dashboard.showtimes.show', compact('showtime'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(ShowTime $showtime)
     {
-        //
+        return view('dashboard.showtimes.show', compact('showtime'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(ShowTime $showtime)
     {
         //
+        return view('dashboard.showtimes.edit', compact('showtime'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ShowTimeRequest $request, ShowTime $showtime)
     {
         //
+        $showtime->update($request->all());
+        flash(trans('showtimes.messages.updated'));
+        return redirect()->route('dashboard.showtimes.show', $showtime);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(ShowTime $showtime)
     {
         //
+        $showtime->delete();
+        flash(trans('showtimes.messages.deleted'));
+        return redirect()->route('dashboard.showtimes.index');
     }
     public function trashed()
     {
         $this->authorize('viewTrash', ShowTime::class);
-        $showtime = ShowTime::onlyTrashed()->paginate();
-        return view('dashboard.showtime.trashed', compact('showtime'));
+        $showtimes = ShowTime::onlyTrashed()->paginate();
+        return view('dashboard.showtimes.trashed', compact('showtimes'));
     }
 
 
@@ -103,7 +114,7 @@ class ShowTimeController extends Controller
     {
         $this->authorize('forceDelete', $showtime);
         $showtime->forceDelete();
-        flash(trans('products.messages.deleted'));
+        flash(trans('showtimes.messages.deleted'));
         return redirect()->route('dashboard.showtimes.trashed');
     }
 }

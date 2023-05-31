@@ -15,7 +15,7 @@ class ShowTimePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.showtimes');
+        return $user->isSuperAdmin() || $user->hasPermissionTo('manage.showtimes');
     }
 
     /**
@@ -27,7 +27,7 @@ class ShowTimePolicy
      */
     public function view(User $user, ShowTime $showtime)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.showtimes');
+        return $user->isSuperAdmin() || $user->hasPermissionTo('manage.showtimes');
     }
 
     /**
@@ -38,7 +38,7 @@ class ShowTimePolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.showtimes');
+        return $user->isSuperAdmin() || $user->hasPermissionTo('manage.showtimes');
     }
 
     /**
@@ -50,7 +50,7 @@ class ShowTimePolicy
      */
     public function update(User $user, ShowTime $showtime)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.showtimes');
+        return $user->isSuperAdmin() || $user->hasPermissionTo('manage.showtimes');
     }
 
     /**
@@ -62,7 +62,7 @@ class ShowTimePolicy
      */
     public function delete(User $user, ShowTime $showtime)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.showtimes');
+        return $user->isSuperAdmin() || $user->hasPermissionTo('manage.showtimes');
     }
 
     /**
@@ -73,7 +73,7 @@ class ShowTimePolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.showtimes')) && $this->hasSoftDeletes();
+        return ($user->isSuperAdmin() || $user->hasPermissionTo('manage.showtimes')) && $this->hasSoftDeletes();
     }
 
     /**
@@ -85,7 +85,7 @@ class ShowTimePolicy
      */
     public function restore(User $user, ShowTime $showtime)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.showtimes')) && $this->trashed($showtime);
+        return ($user->isSuperAdmin() || $user->hasPermissionTo('manage.showtimes')) && $this->trashed($showtime);
     }
 
     /**
@@ -97,7 +97,7 @@ class ShowTimePolicy
      */
     public function forceDelete(User $user, ShowTime $showtime)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.showtimes')) && $this->trashed($showtime);
+        return ($user->isSuperAdmin()  || $user->hasPermissionTo('manage.showtimes')) && $this->trashed($showtime);
     }
 
     /**
