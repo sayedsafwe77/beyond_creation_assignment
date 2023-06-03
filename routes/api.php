@@ -24,3 +24,10 @@ Route::controller('ShowTimeController')->group(function () {
     Route::delete('showtimes/{showtime}', 'destroy');
     Route::get('/select/showtimes', 'select')->name('showtimes.select');
 });
+Route::controller('MovieController')->group(function () {
+    Route::get('movies', 'index');
+});
+Route::controller('EventDayController')->group(function () {
+    Route::get('movie/eventdays', 'getMovieEventDays');
+    Route::get('eventday/showtimes', 'getEventDayShowtime');
+});

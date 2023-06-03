@@ -2,7 +2,7 @@
 
 namespace App\Http\Filters;
 
-class EventDayFilter extends BaseFilters
+class MovieFilter extends BaseFilters
 {
     /**
      * Registered filters to operate upon.
@@ -10,50 +10,35 @@ class EventDayFilter extends BaseFilters
      * @var array
      */
     protected $filters = [
-        'from',
-        'to',
-        'movie_id',
+        'name',
+        'description',
         'selected_id'
     ];
 
+
     /**
-     * Filter the query by a given min date.
+     * Filter the query by a given name.
      *
      * @param string|int $value
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    protected function from($value)
+    protected function name($value)
     {
         if ($value) {
-            return $this->builder->where('event_day', '>=', "$value");
+            return $this->builder->whereTranslationLike('name', "%$value%");
         }
         return $this->builder;
     }
     /**
-     * Filter the query by a given movie_id.
+     * Filter the query by a given name.
      *
      * @param string|int $value
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    protected function movieId($value)
+    protected function description($value)
     {
         if ($value) {
-            return $this->builder->whereHas('category', function ($q) use ($value) {
-                $q->whereTranslationLike('name', "%$value%");
-            });
-        }
-        return $this->builder;
-    }
-    /**
-     * Filter the query by a given max date.
-     *
-     * @param string|int $value
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    protected function to($value)
-    {
-        if ($value) {
-            return $this->builder->where('event_day', '<=', "$value");
+            return $this->builder->whereTranslationLike('description', "%$value%");
         }
         return $this->builder;
     }

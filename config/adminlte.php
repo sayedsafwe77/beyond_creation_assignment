@@ -316,6 +316,11 @@ return [
             'url'  => 'dashboard/eventdays',
             'can'  => 'manage-eventdays',
         ],
+        [
+            'text' => 'Movies',
+            'url'  => 'dashboard/movies',
+            'can'  => 'manage-movies',
+        ],
         // [
         //     'text'        => 'pages',
         //     'url'         => 'admin/pages',

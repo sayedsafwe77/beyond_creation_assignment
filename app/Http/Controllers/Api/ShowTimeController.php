@@ -7,6 +7,7 @@ use App\Http\Requests\ShowTimeRequest;
 use App\Http\Resources\ShowTimeResource;
 use App\Models\ShowTime;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ShowTimeController extends Controller
 {
@@ -22,16 +23,16 @@ class ShowTimeController extends Controller
      *       ),
      * )
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        return ShowTimeResource::collection(ShowTime::get());
+        return ShowTimeResource::collection(ShowTime::filter()->simplePaginate());
     }
 
-    public function show()
+    public function show(ShowTime $showtime): ShowTimeResource
     {
-        return ShowTimeResource::collection(ShowTime::get());
+        return new ShowTimeResource($showtime);
     }
-    public function indexWithTrashed()
+    public function indexWithTrashed(): AnonymousResourceCollection
     {
         return ShowTimeResource::collection(ShowTime::withTrashed()->get());
     }

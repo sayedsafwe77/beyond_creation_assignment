@@ -13,9 +13,17 @@ return new class extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->softDeletes();
             $table->timestamps();
+        });
+        Schema::create('movie_translations', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('movie_id');
+            $table->string('name');
+            $table->text('description');
+            $table->string('locale')->index();
+            $table->unique(['movie_id', 'locale']);
+            $table->foreign('movie_id')->references('id')->on('movies')->cascadeOnDelete();
         });
     }
 
@@ -25,5 +33,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('movies');
+        Schema::dropIfExists('movie_translations');
     }
 };

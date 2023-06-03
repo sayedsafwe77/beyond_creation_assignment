@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Filters\EventDayFilter;
 use App\Http\Filters\Filterable;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,5 +23,9 @@ class EventDay extends Model
     public function showtime()
     {
         return $this->showtimes->first();
+    }
+    public function getEventDayStringFormatted()
+    {
+        return Carbon::parse($this->event_day)->toFormattedDayDateString();
     }
 }

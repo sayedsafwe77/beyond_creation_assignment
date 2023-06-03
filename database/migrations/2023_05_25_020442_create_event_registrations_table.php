@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('mobile');
-            $table->foreignId('movie_event_day_id')->constrained('movie_event_days');
+            $table->foreignId('movie_event_day_show_time_id')->constrained('movie_eventday_showtime');
             $table->timestamps();
         });
     }
