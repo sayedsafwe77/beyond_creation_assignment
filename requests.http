@@ -14,3 +14,8 @@ Accept: application/json
 
 ### delete showtime
 DELETE   http://e-theatre.test/api/showtimes/1
+
+
+
+### List All movies
+GET http://e-theatre.test/api/movies
