@@ -24,3 +24,13 @@ if (!function_exists('count_formatted')) {
         return $num;
     }
 }
+if (!function_exists('getAllMediaUrl')) {
+    function getAllMediaUrl($media_resources)
+    {
+        $photos = [];
+        foreach ($media_resources as $resource) {
+            $photos[] = $resource['url'];
+        }
+        return $photos;
+    }
+}
