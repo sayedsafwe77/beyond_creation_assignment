@@ -1,5 +1,6 @@
 [
     "manage.roles",
     "manage.showtimes",
-    "manage.eventdays"
+    "manage.eventdays",
+    "manage.movies"
 ]

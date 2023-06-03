@@ -55,6 +55,13 @@
 @stop
 
 @section('adminlte_js')
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/laravel-file-uploader"></script>
+    <script>
+        new Vue({
+            el: '#app'
+        })
+    </script>
     @vite('resources/js/app.js')
     @stack('js')
     @yield('js')

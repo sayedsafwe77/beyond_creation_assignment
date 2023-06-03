@@ -15,6 +15,11 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('trashed/eventdays/{trashed_showtime}', 'EventDaysController@show')->name('eventdays.trashed.show');
     Route::post('eventdays/{trashed_showtime}/restore', 'EventDaysController@restore')->name('eventdays.restore');
     Route::delete('eventdays/{trashed_showtime}/forceDelete', 'EventDaysController@forceDelete')->name('eventdays.forceDelete');
+    Route::resource('/movies', 'MovieController');
+    Route::get('trashed/movies', 'MovieController@trashed')->name('movies.trashed');
+    Route::get('trashed/movies/{trashed_showtime}', 'MovieController@show')->name('movies.trashed.show');
+    Route::post('movies/{trashed_showtime}/restore', 'MovieController@restore')->name('movies.restore');
+    Route::delete('movies/{trashed_showtime}/forceDelete', 'MovieController@forceDelete')->name('movies.forceDelete');
     Route::delete('delete', 'DeleteController@destroy')->name('delete.selected');
     Route::delete('forceDelete', 'DeleteController@forceDelete')->name('forceDelete.selected');
     Route::delete('restore', 'DeleteController@restore')->name('restore.selected');

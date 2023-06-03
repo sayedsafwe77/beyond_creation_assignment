@@ -35,7 +35,7 @@
                     <x-check-all-item :model="$eventday"></x-check-all-item>
                 </td>
                 <td>
-                    {{ $eventday->event_day }}
+                    {{ $eventday->getEventDayStringFormatted() }}
                 </td>
                 <td>
                     {{ $eventday->showtimes->first()->from }}
