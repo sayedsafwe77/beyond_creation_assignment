@@ -12,17 +12,56 @@ https://github.com/sayedsafwe77/beyond_creation_assignment/assets/73827400/aacfb
 ### Installation
 
 -   Clone the repository
+
+```
+    git clone https://github.com/sayedsafwe77/beyond_creation_assignment.git
+```
+
 -   `cd` into the project directory
+
+```
+   cd beyond_creation_assignment
+```
+
 -   Run `Composer Install`
+
+```
+    Composer Install
+```
+
 -   Run `npm install`
+
+```
+    npm install
+```
 
 <a name="setup"></a>
 
 ### Setup
 
 -   Run `cp .env.example .env`
+
+```
+    cp .env.example .env
+```
+
 -   Create Database And Add Database Credentails To .env file
 -   Run `php artisan migrate --seed`
+
+```
+    php artisan migrate --seed
+```
+
 -   Run `npm run dev`
+
+```
+    npm run dev
+```
+
 -   Run `php artisan serve`
+
+```
+    php artisan serve
+```
+
 -   Visit `http://127.0.0.1:8000/dashoard`
