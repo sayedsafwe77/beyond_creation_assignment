@@ -14,6 +14,12 @@ class ShowTimeSeeder extends Seeder
     public function run(): void
     {
         //
-        ShowTime::factory(10)->create();
+        $showtimes = [['from' => '18:00', 'to' => '20:30'], ['from' => '20:30', 'to' => '22:00'], ['from' => '22:00', 'to' => '01:00']];
+        foreach ($showtimes as $showtime) {
+            ShowTime::create([
+                'from' => $showtime['from'],
+                'to' => $showtime['to'],
+            ]);
+        }
     }
 }

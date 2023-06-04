@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RolesAndPermissionsSeeder::class);
         $this->call(ShowTimeSeeder::class);
+        $this->call(EventDaySeeder::class);
+        $this->call(MovieSeeder::class);
 
         $user = User::factory()->create([
             'name' => 'admin',
