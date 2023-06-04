@@ -46,11 +46,14 @@ https://github.com/sayedsafwe77/beyond_creation_assignment/assets/73827400/aacfb
 ```
 
 -   Create Database And Add Database Credentails To .env file
+
 -   Run `php artisan migrate --seed`
 
 ```
     php artisan migrate --seed
 ```
+
+-   Run `php artisan l5-swagger:generate` to generate api documentation
 
 -   Run `npm run dev`
 
@@ -65,3 +68,7 @@ https://github.com/sayedsafwe77/beyond_creation_assignment/assets/73827400/aacfb
 ```
 
 -   Visit `http://127.0.0.1:8000/dashoard`
+
+-   If You Want To Visit Api Documentation
+
+-   Visit `http://127.0.0.1:8000/api/documentation`
