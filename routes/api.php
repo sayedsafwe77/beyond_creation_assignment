@@ -35,5 +35,4 @@ Route::controller('EventDayShowTimeController')->group(function () {
 });
 Route::controller('EventRegistrationController')->group(function () {
     Route::post('register/event', 'store');
-    Route::get('event/info', 'getRegistrationInfo');
 });
