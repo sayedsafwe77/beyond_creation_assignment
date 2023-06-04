@@ -15,8 +15,14 @@ class EventDayController extends Controller
     /**
      * @OA\Get(
      * path="/api/movie/eventdays",
-     * summary="show all movies",
-     * description="show all movies api",
+     * summary="show all movie eventdays",
+     * description="show all movie eventdays api",
+     *      @OA\Parameter(
+     *         name="movie_id",
+     *         in="path",
+     *         description="id for movie that you want to display eventdays for",
+     *         required=true,
+     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="get all movies successfully",

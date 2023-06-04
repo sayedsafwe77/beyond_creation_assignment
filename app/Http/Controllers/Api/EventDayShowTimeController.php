@@ -13,13 +13,24 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class EventDayShowTimeController extends Controller
 {
-    //
 
     /**
      * @OA\Get(
-     * path="/api/movie/eventdays",
-     * summary="show all movies",
-     * description="show all movies api",
+     * path="/api/movie/eventday/showtimes",
+     * summary="show all movie showtimes",
+     * description="show all movies showtimes api",
+     *      @OA\Parameter(
+     *         name="movie_id",
+     *         in="path",
+     *         description="id for movie that you want to display showtimes for",
+     *         required=true,
+     *      ),
+     *      @OA\Parameter(
+     *         name="event_day_id",
+     *         in="path",
+     *         description="id for eventday that you want to display showtimes for",
+     *         required=true,
+     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="get all movies successfully",

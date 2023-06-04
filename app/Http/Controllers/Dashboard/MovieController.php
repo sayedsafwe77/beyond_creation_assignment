@@ -68,7 +68,7 @@ class MovieController extends Controller
      */
     public function update(MovieRequest $request, Movie $movie)
     {
-        $movie->update($request->except('event_days_show_times'));
+        $movie->update($request->except('media', 'event_days_show_times', '_token'));
         $movie->event_days_show_times()->detach();
         $movie->event_days_show_times()->attach($request->event_days_show_times);
         $movie->addAllMediaFromTokens();
