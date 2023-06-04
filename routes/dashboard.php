@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('/', 'ShowTimeController@index');
     Route::resource('/showtimes', 'ShowTimeController');
     Route::get('trashed/showtimes', 'ShowTimeController@trashed')->name('showtimes.trashed');
     Route::get('trashed/showtimes/{trashed_showtime}', 'ShowTimeController@show')->name('showtimes.trashed.show');
