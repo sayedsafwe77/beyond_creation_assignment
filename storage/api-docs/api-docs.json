@@ -5,6 +5,147 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/movie/eventdays": {
+            "get": {
+                "summary": "show all movie eventdays",
+                "description": "show all movie eventdays api",
+                "operationId": "4e6b35e9f4b7ed88d460e36574583f5e",
+                "parameters": [
+                    {
+                        "name": "movie_id",
+                        "in": "path",
+                        "description": "id for movie that you want to display eventdays for",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get all movies successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/movie/eventday/showtimes": {
+            "get": {
+                "summary": "show all movie showtimes",
+                "description": "show all movies showtimes api",
+                "operationId": "3f1724a03bf65db14bef8db968de4edc",
+                "parameters": [
+                    {
+                        "name": "movie_id",
+                        "in": "path",
+                        "description": "id for movie that you want to display showtimes for",
+                        "required": true
+                    },
+                    {
+                        "name": "event_day_id",
+                        "in": "path",
+                        "description": "id for eventday that you want to display showtimes for",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get all movies successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/register/event": {
+            "post": {
+                "summary": "register for new event ",
+                "description": "register for new event api",
+                "operationId": "fd270b10bbb999b386b7a4d663815551",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "mobile",
+                                    "movie_id",
+                                    "eventday_id",
+                                    "showtime_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "sayed safwet"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "sayed@gmail.com"
+                                    },
+                                    "mobile": {
+                                        "type": "string",
+                                        "example": "01100000000"
+                                    },
+                                    "movie_id": {
+                                        "type": "string",
+                                        "example": "1"
+                                    },
+                                    "eventday_id": {
+                                        "type": "string",
+                                        "example": "1"
+                                    },
+                                    "showtime_id": {
+                                        "type": "string",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "registaration done successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/movies": {
+            "get": {
+                "summary": "show all movies",
+                "description": "show all movies api",
+                "operationId": "f1b3cb64ae74885cdcf404eebe09485f",
+                "responses": {
+                    "200": {
+                        "description": "get all movies successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/showtimes": {
             "get": {
                 "summary": "show all showtimes",
