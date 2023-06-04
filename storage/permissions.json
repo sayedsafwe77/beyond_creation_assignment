@@ -2,5 +2,6 @@
     "manage.roles",
     "manage.showtimes",
     "manage.eventdays",
-    "manage.movies"
+    "manage.movies",
+    "manage.registrations"
 ]

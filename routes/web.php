@@ -18,5 +18,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('locale/{locale}', [App\Http\Controllers\LocaleController::class, 'update'])->name('locale')->where('locale', '(ar|en)');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

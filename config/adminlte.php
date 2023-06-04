@@ -310,16 +310,26 @@ return [
             'text' => 'ShowTimes',
             'url'  => 'dashboard/showtimes',
             'can'  => 'manage-showtimes',
+            'icon'  => 'fa fa-calendar',
         ],
         [
             'text' => 'EventDays',
             'url'  => 'dashboard/eventdays',
             'can'  => 'manage-eventdays',
+            'icon'  => 'fa fa-calendar',
         ],
         [
             'text' => 'Movies',
             'url'  => 'dashboard/movies',
             'can'  => 'manage-movies',
+            'icon'  => 'fa fa-film',
+
+        ],
+        [
+            'text' => 'Registration',
+            'url'  => 'dashboard/registrations',
+            'can'  => 'manage-registrations',
+            'icon'  => 'fa fa-registered',
         ],
         // [
         //     'text'        => 'pages',

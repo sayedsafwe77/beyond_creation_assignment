@@ -18,14 +18,13 @@
                         <tr>
                             <th colspan="2">@lang('movies.attributes.eventdays')</th>
                         </tr>
-                        @foreach ($movie_event_days as $movie_event_day)
-                            {{-- @dd($movie_event_day->eventDay) --}}
+                        @foreach ($movie->event_days_show_times as $eventday_showtime)
                             <tr>
                                 <th colspan="2">
 
-                                    {{ $movie_event_day->eventDay->event_day }} ( {{ $movie_event_day->showTime->from }}
+                                    {{ $eventday_showtime->eventday->event_day }} ( {{ $eventday_showtime->showtime->from }}
                                     -
-                                    {{ $movie_event_day->showTime->to }})
+                                    {{ $eventday_showtime->showtime->to }})
                                 </th>
                             </tr>
                         @endforeach

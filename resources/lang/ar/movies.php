@@ -27,7 +27,7 @@ return [
         'restored' => 'تم استعادة الفيلم بنجاح.',
     ],
     'attributes' => [
-        'name' => 'الاسم',
+        'name' => 'اسم الفيلم',
         'description' => 'الوصف',
         'image' => 'الصور',
         'eventdays' => 'ايام العرض',
