@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
 
-class MovieRequest extends FormRequest
+class MovieEventDayRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +12,6 @@ class MovieRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
-        // return auth('sanctum')->check();
     }
 
     /**
@@ -23,11 +21,9 @@ class MovieRequest extends FormRequest
      */
     public function rules(): array
     {
-        return RuleFactory::make([
-            '%name%' => 'required|string',
-            '%description%' => 'required|string',
-            'event_days_show_times' => 'required|array|min:1',
-            'event_days_show_times.*' => 'numeric',
-        ]);
+        return [
+            //
+            'movie_event_day_id' => 'required|exists:movie_eventdays,id'
+        ];
     }
 }

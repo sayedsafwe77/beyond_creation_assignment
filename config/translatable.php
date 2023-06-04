@@ -13,11 +13,6 @@ return [
     'locales' => [
         'en',
         'ar',
-        'fr',
-        'es' => [
-            'MX', // mexican spanish
-            'CO', // colombian spanish
-        ],
     ],
 
     /*
@@ -143,7 +138,7 @@ return [
      *
      */
     'rule_factory' => [
-        'format' => \Astrotomic\Translatable\Validation\RuleFactory::FORMAT_ARRAY,
+        'format' => \Astrotomic\Translatable\Validation\RuleFactory::FORMAT_KEY,
         'prefix' => '%',
         'suffix' => '%',
     ],

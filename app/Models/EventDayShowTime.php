@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Http\Filters\EventDayShowTimeFilter;
+use App\Http\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class EventDayShowTime extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
+
+    protected $filter = EventDayShowTimeFilter::class;
     public function eventday()
     {
         return $this->belongsTo(EventDay::class, 'event_day_id');
@@ -18,6 +22,6 @@ class EventDayShowTime extends Model
     }
     public function movies()
     {
-        return $this->belongsToMany(Movie::class, 'movie_event_days', 'event_day_show_times_id', 'movie_id');
+        return $this->belongsToMany(Movie::class, 'movie_eventdays', 'event_day_show_time_id', 'movie_id');
     }
 }

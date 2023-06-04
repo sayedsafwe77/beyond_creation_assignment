@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\MovieEventDayShowTimeResource;
-use App\Models\MovieEventDayShowTime;
+use App\Http\Requests\EventDayShowTimeRequest;
+use App\Http\Resources\EventDayShowTimeResource;
+use App\Http\Resources\MovieEventDayResource;
+use App\Models\EventDayShowTime;
+use App\Models\MovieEventDay;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class MovieEventDayShowTimeController extends Controller
+class EventDayShowTimeController extends Controller
 {
+    //
+
     /**
      * @OA\Get(
      * path="/api/movie/eventdays",
@@ -22,8 +27,8 @@ class MovieEventDayShowTimeController extends Controller
      *       ),
      * )
      */
-    public function index(): AnonymousResourceCollection
+    public function getMovieShowTimes(EventDayShowTimeRequest $request): AnonymousResourceCollection
     {
-        return MovieEventDayShowTimeResource::collection(MovieEventDayShowTime::get());
+        return EventDayShowTimeResource::collection(EventDayShowTime::filter()->get());
     }
 }

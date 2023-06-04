@@ -2,7 +2,7 @@
 
 namespace App\Http\Filters;
 
-class MovieEventDayShowTimeFilter extends BaseFilters
+class MovieEventDayFilter extends BaseFilters
 {
     /**
      * Registered filters to operate upon.

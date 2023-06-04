@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class EventRegistration extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    public function movieEventday()
+    {
+        return $this->belongsTo(MovieEventDay::class, 'movie_event_day_id');
+    }
 }

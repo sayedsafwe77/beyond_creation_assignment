@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MovieEventDayShowTimeResource extends JsonResource
+class MovieEventDayResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,8 @@ class MovieEventDayShowTimeResource extends JsonResource
     {
         return [
             'id' => $this->eventDayShowtime->eventday->id,
-            // 'movie_event_day_id' => $this->id,
-            'event_day' => $this->eventDayShowtime->eventday->event_day,
+            'movie_event_day_id' => $this->id,
+            'name' => $this->eventDayShowtime->eventday->event_day
             // 'showtimes' =>  $this->eventDayShowtime->showtime->from . ' - ' . $this->eventDayShowtime->showtime->to,
             // 'movie_name' => $this->movie->name,
         ];

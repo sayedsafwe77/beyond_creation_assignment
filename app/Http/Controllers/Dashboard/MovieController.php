@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MovieRequest;
 use App\Models\EventDay;
-use App\Models\EventDayShowTime;
 use App\Models\EventShowtime;
 use App\Models\Movie;
-use App\Models\MovieEventDayShowTime;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -38,9 +36,9 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        $eventdays_showtimes = EventDayShowTime::whereIn('id', $request->event_days_show_times)->select('event_day_id', 'show_time_id')->get()->toArray();
+        // dd($request->except('media', 'event_days_show_times', '_token'));
         $movie = Movie::create($request->except('media', 'event_days_show_times', '_token'));
-        $movie->eventdays()->sync($eventdays_showtimes);
+        $movie->event_days_show_times()->attach($request->event_days_show_times);
         $movie->addAllMediaFromTokens();
         flash(trans('movies.messages.created'));
         return redirect()->route('dashboard.movies.show', $movie);
@@ -51,8 +49,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        $movie_event_days = MovieEventDayShowTime::where('movie_id', $movie->id)->get();
-        return view('dashboard.movies.show', compact('movie', 'movie_event_days'));
+        return view('dashboard.movies.show', compact('movie'));
     }
 
     /**
@@ -69,12 +66,11 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Movie $movie)
+    public function update(MovieRequest $request, Movie $movie)
     {
-        $eventdays_showtimes = EventDayShowTime::whereIn('id', $request->event_days_show_times)->select('event_day_id', 'show_time_id')->get()->toArray();
         $movie->update($request->except('event_days_show_times'));
-        $movie->eventdays()->detach();
-        $movie->eventdays()->sync($eventdays_showtimes);
+        $movie->event_days_show_times()->detach();
+        $movie->event_days_show_times()->attach($request->event_days_show_times);
         $movie->addAllMediaFromTokens();
         flash(trans('movies.messages.updated'));
         return redirect()->route('dashboard.movies.show', $movie);

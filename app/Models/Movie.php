@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Spatie\Permission\Commands\Show;
 
 class Movie extends Model implements HasMedia, TranslatableContract
 {
@@ -30,19 +29,7 @@ class Movie extends Model implements HasMedia, TranslatableContract
     }
     public function event_days_show_times()
     {
-        return $this->hasManyThrough(EventDayShowTime::class, MovieEventDayShowTime::class, 'movie_id', 'event_day_id', 'id', 'event_day_id');
-    }
-    // public function event_days_show_times()
-    // {
-    //     return $this->belongsToMany(EventDay::class, 'movie_eventday_showtime', 'movie_id', 'id')->select('movie_eventday_showtime.id as event_days_show_times_id');
-    // }
-    public function eventdays()
-    {
-        return $this->belongsToMany(EventDay::class, 'movie_eventday_showtime', 'movie_id', 'event_day_id');
-    }
-    public function showtimes()
-    {
-        return $this->belongsToMany(ShowTime::class, 'movie_eventday_showtime', 'movie_id', 'show_time_id');
+        return $this->belongsToMany(EventDayShowTime::class, 'movie_eventdays', 'movie_id', 'event_day_show_time_id');
     }
     /**
      * The movie main image url.

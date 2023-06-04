@@ -16,6 +16,7 @@ class ShowTimeFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
             //
             'from' => fake()->time(),

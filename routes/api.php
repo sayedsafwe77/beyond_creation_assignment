@@ -29,5 +29,11 @@ Route::controller('MovieController')->group(function () {
 });
 Route::controller('EventDayController')->group(function () {
     Route::get('movie/eventdays', 'getMovieEventDays');
-    Route::get('eventday/showtimes', 'getEventDayShowtime');
+});
+Route::controller('EventDayShowTimeController')->group(function () {
+    Route::get('movie/eventday/showtimes', 'getMovieShowTimes');
+});
+Route::controller('EventRegistrationController')->group(function () {
+    Route::post('register/event', 'store');
+    Route::get('event/info', 'getRegistrationInfo');
 });

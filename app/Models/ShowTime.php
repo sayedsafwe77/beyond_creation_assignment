@@ -38,4 +38,8 @@ class ShowTime extends Model
     {
         return $this->belongsToMany(EventDay::class, 'event_day_show_times', 'show_time_id', 'event_day_id');
     }
+    function movieEventDayShowTime()
+    {
+        return $this->hasOneThrough(MovieEventDay::class, EventDayShowTime::class, 'show_time_id', 'event_day_show_time_id', 'id', 'id');
+    }
 }

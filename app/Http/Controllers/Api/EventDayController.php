@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\MovieEventDayShowTimeResource;
-use App\Http\Resources\ShowTimeResource;
-use App\Models\MovieEventDayShowTime;
-use App\Models\ShowTime;
+use App\Http\Resources\MovieEventDayResource;
+use App\Models\MovieEventDay;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class EventDayController extends Controller
 {
+    //
 
     /**
      * @OA\Get(
-     * path="/api/eventdays/{id}",
-     * summary="show movie eventday ",
-     * description="show all eventdays api",
+     * path="/api/movie/eventdays",
+     * summary="show all movies",
+     * description="show all movies api",
      *      @OA\Response(
      *          response=200,
      *          description="get all movies successfully",
@@ -26,24 +26,13 @@ class EventDayController extends Controller
      */
     public function getMovieEventDays(): AnonymousResourceCollection
     {
-        // movie_id
-        return MovieEventDayShowTimeResource::collection(MovieEventDayShowTime::filter()->simplePaginate());
-    }
-    /**
-     * @OA\Get(
-     * path="/api/eventdays/{id}",
-     * summary="show movie eventday ",
-     * description="show all eventdays api",
-     *      @OA\Response(
-     *          response=200,
-     *          description="get all movies successfully",
-     *          @OA\JsonContent()
-     *       ),
-     * )
-     */
-    public function getEventDayShowtime(): AnonymousResourceCollection
-    {
-        // movie_id
-        return ShowTimeResource::collection(ShowTime::filter()->simplePaginate());
+        // MovieEventDay::filter()->whereHas('eventDayShowTime',function($q){
+        //     $q->where('is_active',true);
+        // })->get()
+        $movie_eventdays = MovieEventDay::filter()
+            ->select('movie_eventdays.*', 'event_day_show_times.id', 'event_day_show_times.event_day_id')
+            ->join('event_day_show_times', 'movie_eventdays.event_day_show_time_id', '=', 'event_day_show_times.id')
+            ->get()->unique('event_day_id');
+        return MovieEventDayResource::collection($movie_eventdays);
     }
 }
